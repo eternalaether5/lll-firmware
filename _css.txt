@@ -37,4 +37,18 @@ ol{padding:0;counter-reset:none}.book{list-style:none;background:var(--paper);bo
 .book h2{border:0;margin:.2rem 0 .45rem;padding:0}.book h2::before{display:none}.rank{font-family:var(--mono);color:var(--accent);margin-right:.25rem}
 .stats{font-family:var(--sans);font-size:.85rem;color:var(--muted)}
 footer{border-top:1px solid var(--rule);padding-top:1.3rem;padding-bottom:3rem;font-family:var(--sans);color:var(--muted)}footer hr{display:none}footer small{font-size:.85rem;line-height:1.9}footer a{color:var(--muted)}footer a:hover{color:var(--accent)}
-@media (prefers-reduced-motion:reduce){*{transition:none!important}.card:hover{transform:none}}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}.card:hover{transform:none}}/* Add to each site's _css.txt (or append in build.mjs) when wiring the form. */
+.nl-signup{margin:2rem 0 0}
+.nl-form{display:grid;gap:.75rem;margin-top:1rem;max-width:28rem}
+.nl-form label{display:block;font-family:var(--sans);font-size:.9rem;font-weight:600;margin-bottom:.25rem}
+.nl-form input[type=text],.nl-form input[type=email]{
+  width:100%;font:1rem/1.4 var(--sans);padding:.55rem .7rem;border:1px solid var(--rule);
+  border-radius:8px;background:var(--bg);color:var(--ink)
+}
+.nl-form input:focus-visible{outline:3px solid var(--accent);outline-offset:2px}
+.nl-opt{font-weight:500;color:var(--muted);font-size:.85em}
+.nl-consent{font-family:var(--sans);font-size:.9rem;font-weight:400}
+.nl-consent label{font-weight:400;display:flex;gap:.55rem;align-items:flex-start}
+.nl-consent input{margin-top:.25rem}
+/* Honeypot off-screen (not display:none — some bots skip those) */
+.nl-hp{position:absolute;left:-10000px;top:auto;width:1px;height:1px;overflow:hidden}
