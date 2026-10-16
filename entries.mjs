@@ -1,4 +1,4 @@
-// Curated v1. Every URL checked live (HTTP 200) on 2026-10-14.
+// Curated v1. URLs checked live (HTTP 200); last batch 2026-10-16.
 const LINK = "Free to access. Copyright held by the provider; this directory only links to it and reproduces no content.";
 const e = (id, title, provider, url, tags, level, format, license, source, summary) =>
   ({ id, title, provider, url, tags, level, format, license, source, summary });
@@ -28,4 +28,6 @@ e("freertos-book","Mastering the FreeRTOS Real Time Kernel","FreeRTOS / Amazon",
 e("flashrom","flashrom","flashrom project","https://www.flashrom.org/",["tools","spi","flash","hardware"],"Intermediate","Open-source tool",LINK,"Official site","Utility for reading and writing chip firmware over SPI and similar programmer interfaces."),
 e("probe-rs","probe-rs","probe-rs project","https://github.com/probe-rs/probe-rs",["tools","debug","rust","swd"],"Intermediate","Open-source tool (GitHub)",LINK,"Official GitHub","Modern debug probe toolkit (SWD/JTAG) with a Rust core and cargo integration."),
 e("awesome-iot-hacks","awesome-iot-hacks","nebgnahz","https://github.com/nebgnahz/awesome-iot-hacks",["awesome-list","iot","writeups"],"Reference","Curated list (GitHub)",LINK,"Official GitHub","Curated links to published IoT and firmware hack writeups for inspiration and learning."),
+e("chipwhisperer-docs","ChipWhisperer documentation","NewAE Technology","https://chipwhisperer.readthedocs.io/en/latest/",["hardware","side-channel","glitching","docs"],"Intermediate","Official docs",LINK,"Read the Docs","Documentation for ChipWhisperer hardware and software used in side-channel and fault-injection labs."),
+e("chipwhisperer","ChipWhisperer","NewAE Technology","https://github.com/newaetech/chipwhisperer",["tools","hardware","side-channel","glitching"],"Intermediate","Open-source tool (GitHub)",LINK,"Official GitHub","Open-source toolchain for power analysis and glitching attacks against embedded targets."),
 ];
