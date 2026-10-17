@@ -1,4 +1,4 @@
-// Curated v1. URLs checked live (HTTP 200); last batch 2026-10-16.
+// Curated v1. URLs checked live (HTTP 200); last batch 2026-10-17.
 const LINK = "Free to access. Copyright held by the provider; this directory only links to it and reproduces no content.";
 const e = (id, title, provider, url, tags, level, format, license, source, summary) =>
   ({ id, title, provider, url, tags, level, format, license, source, summary });
@@ -30,4 +30,6 @@ e("probe-rs","probe-rs","probe-rs project","https://github.com/probe-rs/probe-rs
 e("awesome-iot-hacks","awesome-iot-hacks","nebgnahz","https://github.com/nebgnahz/awesome-iot-hacks",["awesome-list","iot","writeups"],"Reference","Curated list (GitHub)",LINK,"Official GitHub","Curated links to published IoT and firmware hack writeups for inspiration and learning."),
 e("chipwhisperer-docs","ChipWhisperer documentation","NewAE Technology","https://chipwhisperer.readthedocs.io/en/latest/",["hardware","side-channel","glitching","docs"],"Intermediate","Official docs",LINK,"Read the Docs","Documentation for ChipWhisperer hardware and software used in side-channel and fault-injection labs."),
 e("chipwhisperer","ChipWhisperer","NewAE Technology","https://github.com/newaetech/chipwhisperer",["tools","hardware","side-channel","glitching"],"Intermediate","Open-source tool (GitHub)",LINK,"Official GitHub","Open-source toolchain for power analysis and glitching attacks against embedded targets."),
+e("unblob","unblob","ONEKEY","https://unblob.org/",["tools","extraction","file-formats","firmware"],"Beginner","Open-source tool",LINK,"Official site","Recursive extraction suite that unpacks firmware images across dozens of archive, compression and filesystem formats and flags unknown chunks."),
+e("firmwire","FirmWire","FirmWire project","https://github.com/FirmWire/FirmWire",["emulation","baseband","fuzzing","research"],"Advanced","Open-source tool (GitHub)",LINK,"Official GitHub","Full-system emulator for smartphone baseband firmware, aimed at fuzzing and debugging cellular stacks."),
 ];
