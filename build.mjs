@@ -9,7 +9,7 @@ fs.rmSync(out, { recursive: true, force: true });
 fs.mkdirSync(`${out}/${ENTRY_PATH}`, { recursive: true });
 
 const e = s => String(s).replace(/[&<>"]/g, ch => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[ch]));
-const today = process.env.VERIFIED_DATE || "2026-10-17";
+const today = process.env.VERIFIED_DATE || "2026-10-18";
 const tags = [...new Set(entries.flatMap(c => c.tags))].sort();
 const providers = new Set(entries.map(c => c.provider)).size;
 
@@ -153,9 +153,21 @@ const homeLd = `<script type="application/ld+json">${JSON.stringify({
   },
 })}</script>`;
 
+const siteLd = `<script type="application/ld+json">${JSON.stringify({
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "@id": `${SITE}/#website`,
+  name: BRAND,
+  url: SITE + "/",
+  description: TAGLINE,
+  inLanguage: "en",
+  isPartOf: { "@type": "WebSite", "@id": "https://lowlevellibrary.com/#website", name: "Low Level Library", url: "https://lowlevellibrary.com/" },
+  publisher: { "@type": "Organization", "@id": "https://lowlevellibrary.com/#organization", name: "Low Level Library", url: "https://lowlevellibrary.com/", logo: "https://lowlevellibrary.com/brand/x-avatar-400.png", sameAs: ["https://x.com/LowLevelLibrary"] },
+})}</script>`;
+
 fs.writeFileSync(
   `${out}/index.html`,
-  page(`${NAME} | ${BRAND}`, home, TAGLINE, homeLd, "/")
+  page(`${NAME} | ${BRAND}`, home, TAGLINE, homeLd + siteLd, "/")
 );
 
 for (const c of entries) {
