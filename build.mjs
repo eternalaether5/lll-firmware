@@ -9,12 +9,12 @@ fs.rmSync(out, { recursive: true, force: true });
 fs.mkdirSync(`${out}/${ENTRY_PATH}`, { recursive: true });
 
 const e = s => String(s).replace(/[&<>"]/g, ch => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[ch]));
-const today = process.env.VERIFIED_DATE || "2026-10-18";
+const today = process.env.VERIFIED_DATE || "2026-10-19";
 const tags = [...new Set(entries.flatMap(c => c.tags))].sort();
 const providers = new Set(entries.map(c => c.provider)).size;
 
 const css = fs.readFileSync(new URL("./_css.txt", import.meta.url), "utf8");
-const themeHead = `<meta name="color-scheme" content="light dark"><script>try{var t=localStorage.getItem("theme");if(t==="light"||t==="dark")document.documentElement.dataset.theme=t}catch(_){}</script>`;
+const themeHead = `<meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1"><meta name="color-scheme" content="light dark"><script>try{var t=localStorage.getItem("theme");if(t==="light"||t==="dark")document.documentElement.dataset.theme=t}catch(_){}</script>`;
 const themeBtn = `<button id="theme-toggle" type="button" aria-label="Toggle dark mode" title="Toggle dark mode">◐</button><script>(function(){var b=document.getElementById("theme-toggle"),d=document.documentElement,m=matchMedia("(prefers-color-scheme: dark)");function cur(){return d.dataset.theme||(m.matches?"dark":"light")}function sync(){b.setAttribute("aria-pressed",cur()==="dark"?"true":"false")}b.onclick=function(){var n=cur()==="dark"?"light":"dark";d.dataset.theme=n;try{localStorage.setItem("theme",n)}catch(_){}sync()};m.addEventListener&&m.addEventListener("change",sync);sync()})()</script>`;
 
 const ldEntry = c => ({
