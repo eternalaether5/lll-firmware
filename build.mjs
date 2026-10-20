@@ -9,7 +9,7 @@ fs.rmSync(out, { recursive: true, force: true });
 fs.mkdirSync(`${out}/${ENTRY_PATH}`, { recursive: true });
 
 const e = s => String(s).replace(/[&<>"]/g, ch => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[ch]));
-const today = process.env.VERIFIED_DATE || "2026-10-19";
+const today = process.env.VERIFIED_DATE || "2026-10-20";
 const tags = [...new Set(entries.flatMap(c => c.tags))].sort();
 const providers = new Set(entries.map(c => c.provider)).size;
 
@@ -140,6 +140,7 @@ const homeLd = `<script type="application/ld+json">${JSON.stringify({
   name: NAME,
   url: SITE + "/",
   description: TAGLINE,
+  dateModified: today,
   isPartOf: { "@type": "WebSite", name: "Low Level Library", url: "https://lowlevellibrary.com/" },
   mainEntity: {
     "@type": "ItemList",
