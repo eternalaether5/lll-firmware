@@ -9,7 +9,7 @@ fs.rmSync(out, { recursive: true, force: true });
 fs.mkdirSync(`${out}/${ENTRY_PATH}`, { recursive: true });
 
 const e = s => String(s).replace(/[&<>"]/g, ch => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[ch]));
-const today = process.env.VERIFIED_DATE || "2026-10-20";
+const today = process.env.VERIFIED_DATE || "2026-10-21";
 const tags = [...new Set(entries.flatMap(c => c.tags))].sort();
 const providers = new Set(entries.map(c => c.provider)).size;
 
@@ -166,9 +166,28 @@ const siteLd = `<script type="application/ld+json">${JSON.stringify({
   publisher: { "@type": "Organization", "@id": "https://lowlevellibrary.com/#organization", name: "Low Level Library", url: "https://lowlevellibrary.com/", logo: "https://lowlevellibrary.com/brand/x-avatar-400.png", sameAs: ["https://x.com/LowLevelLibrary"] },
 })}</script>`;
 
+const datasetLd = `<script type="application/ld+json">${JSON.stringify({
+  "@context": "https://schema.org",
+  "@type": "Dataset",
+  "@id": `${SITE}/#catalog`,
+  name: `${BRAND} resource catalog`,
+  description: `Machine-readable catalog of ${entries.length} free resources on ${TOPIC}. Each record lists title, provider, official URL, topic tags, level, format, access terms and a short original summary; links verified ${today}.`,
+  url: SITE + "/",
+  creator: { "@type": "Organization", "@id": "https://lowlevellibrary.com/#organization", name: "Low Level Library", url: "https://lowlevellibrary.com/" },
+  isPartOf: { "@type": "WebSite", "@id": `${SITE}/#website` },
+  isAccessibleForFree: true,
+  inLanguage: "en",
+  dateModified: today,
+  distribution: [
+    { "@type": "DataDownload", encodingFormat: "application/json", contentUrl: `${SITE}/${DATA_FILE}` },
+    { "@type": "DataDownload", encodingFormat: "text/plain", contentUrl: `${SITE}/llms.txt` },
+    { "@type": "DataDownload", encodingFormat: "text/markdown", contentUrl: `${SITE}/llms-full.txt` },
+  ],
+})}</script>`;
+
 fs.writeFileSync(
   `${out}/index.html`,
-  page(`${NAME} | ${BRAND}`, home, TAGLINE, homeLd + siteLd, "/")
+  page(`${NAME} | ${BRAND}`, home, TAGLINE, homeLd + siteLd + datasetLd, "/")
 );
 
 for (const c of entries) {
