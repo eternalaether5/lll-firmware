@@ -9,7 +9,7 @@ fs.rmSync(out, { recursive: true, force: true });
 fs.mkdirSync(`${out}/${ENTRY_PATH}`, { recursive: true });
 
 const e = s => String(s).replace(/[&<>"]/g, ch => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[ch]));
-const today = process.env.VERIFIED_DATE || "2026-10-21";
+const today = process.env.VERIFIED_DATE || "2026-10-24";
 const tags = [...new Set(entries.flatMap(c => c.tags))].sort();
 const providers = new Set(entries.map(c => c.provider)).size;
 
