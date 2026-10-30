@@ -406,7 +406,7 @@ fs.writeFileSync(
   `User-agent: *
 Allow: /
 
-${["GPTBot", "ChatGPT-User", "OAI-SearchBot", "ClaudeBot", "Claude-Web", "PerplexityBot", "Google-Extended", "Applebot-Extended", "CCBot", "Grok", "xAI-Bot"]
+${["GPTBot", "ChatGPT-User", "OAI-SearchBot", "ClaudeBot", "Claude-Web", "PerplexityBot", "Google-Extended", "Applebot-Extended", "CCBot", "Grok", "xAI-Bot", "Claude-SearchBot", "Claude-User", "Perplexity-User", "meta-externalagent", "DuckAssistBot", "Amazonbot", "Applebot"]
   .map(b => `User-agent: ${b}\nAllow: /`)
   .join("\n\n")}
 
