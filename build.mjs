@@ -26,6 +26,8 @@ const ldEntry = c => ({
   provider: { "@type": "Organization", name: c.provider },
   isAccessibleForFree: true,
   educationalLevel: c.level,
+  learningResourceType: c.format,
+  inLanguage: "en",
   keywords: c.tags.join(", "),
   license: c.license,
 });
