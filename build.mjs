@@ -20,6 +20,9 @@ const themeBtn = `<button id="theme-toggle" type="button" aria-label="Toggle dar
 const ldEntry = c => ({
   "@context": "https://schema.org",
   "@type": "LearningResource",
+  "@id": `${SITE}/${ENTRY_PATH}/${c.id}/#resource`,
+  mainEntityOfPage: `${SITE}/${ENTRY_PATH}/${c.id}/`,
+  isPartOf: { "@id": `${SITE}/#website` },
   name: c.title,
   url: c.url,
   description: c.summary,
