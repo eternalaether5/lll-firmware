@@ -9,7 +9,7 @@ fs.rmSync(out, { recursive: true, force: true });
 fs.mkdirSync(`${out}/${ENTRY_PATH}`, { recursive: true });
 
 const e = s => String(s).replace(/[&<>"]/g, ch => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[ch]));
-const today = process.env.VERIFIED_DATE || "2026-11-04";
+const today = process.env.VERIFIED_DATE || "2026-11-06";
 const tags = [...new Set(entries.flatMap(c => c.tags))].sort();
 const providers = new Set(entries.map(c => c.provider)).size;
 
@@ -271,8 +271,9 @@ const aboutFaq = [
 ];
 
 const aboutLd = [
-  { "@context": "https://schema.org", "@type": "Organization", name: BRAND, url: SITE, email: "hello@lowlevellibrary.com", description: `Free directory of ${entries.length} ${TOPIC} resources.`, parentOrganization: { "@type": "Organization", name: "Low Level Library", url: "https://lowlevellibrary.com/" } },
-  { "@context": "https://schema.org", "@type": "WebSite", name: BRAND, url: SITE, publisher: { "@type": "Organization", name: BRAND } },
+  { "@context": "https://schema.org", "@type": "Organization", "@id": `${SITE}/#organization`, name: BRAND, url: SITE, email: "hello@lowlevellibrary.com", description: `Free directory of ${entries.length} ${TOPIC} resources.`, parentOrganization: { "@type": "Organization", "@id": "https://lowlevellibrary.com/#organization", name: "Low Level Library", url: "https://lowlevellibrary.com/" } },
+  { "@context": "https://schema.org", "@type": "WebSite", "@id": `${SITE}/#website`, name: BRAND, url: SITE, inLanguage: "en", publisher: { "@id": `${SITE}/#organization` } },
+  { "@context": "https://schema.org", "@type": "AboutPage", "@id": `${SITE}/about/#webpage`, url: `${SITE}/about/`, name: `About ${BRAND}`, inLanguage: "en", isPartOf: { "@id": `${SITE}/#website` }, about: { "@id": `${SITE}/#organization` }, dateModified: today },
   { "@context": "https://schema.org", "@type": "FAQPage", mainEntity: aboutFaq.map(([q, a]) => ({ "@type": "Question", name: q, acceptedAnswer: { "@type": "Answer", text: a } })) },
 ]
   .map(x => `<script type="application/ld+json">${JSON.stringify(x)}</script>`)
